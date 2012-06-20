@@ -3,12 +3,15 @@ package com.conteudocompacto.main;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 
 import com.conteudocompacto.entities.RNewsLink;
+import com.conteudocompacto.entities.TokenCount;
+import com.conteudocompacto.entities.WordCounterHolder;
 import com.conteudocompacto.persistence.JPAUtil;
 
 public class Main {
@@ -18,6 +21,13 @@ public class Main {
 			EntityManager em = JPAUtil.getInstance().getEm();
 			FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
 			fullTextEntityManager.createIndexer().startAndWait();
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+			for (TokenCount palavra : WordCounterHolder.getInstance().getWordCounter().values()){
+				em.persist(palavra);
+			}
+			em.flush();
+			tx.commit();
 			search();
 			
 		} catch (Exception e) {

@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="rnewsadmin_cat")
+@Table(name="rn_admin_cat")
 public class RNewsCategory {
 
 	@Id

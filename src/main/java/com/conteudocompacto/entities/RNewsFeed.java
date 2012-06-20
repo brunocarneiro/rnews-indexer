@@ -15,7 +15,7 @@ import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.Store;
 
 @Entity
-@Table(name="rnewsadmin_feeds")
+@Table(name="rn_admin_feeds")
 @Indexed
 public class RNewsFeed {
 	

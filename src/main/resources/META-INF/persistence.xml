@@ -14,9 +14,7 @@
             <property name="hibernate.connection.password" value="root"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/rnews?zeroDateTimeBehavior=convertToNull"/>
 			
-			<!-- 
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-             -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
 
             <property name="hibernate.search.default.indexBase" value="target"/>
 

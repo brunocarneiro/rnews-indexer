@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
@@ -17,8 +18,9 @@ import org.hibernate.search.annotations.Resolution;
 import org.hibernate.search.annotations.Store;
 
 @Entity
-@Table(name="rnewsadmin_links")
+@Table(name="rn_admin_links")
 @Indexed
+@Analyzer(impl=MyAnalyzer.class)
 public class RNewsLink {
 
 	@Id
