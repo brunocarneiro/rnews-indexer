@@ -16,7 +16,7 @@
 			
             <property name="hibernate.hbm2ddl.auto" value="update"/>
 
-            <property name="hibernate.search.default.indexBase" value="target"/>
+            <property name="hibernate.search.default.indexBase" value="/var/tmp/lucene"/>
 
             <!-- optional -->
             <property name="hibernate.search.default.directory_provider" value="filesystem"/>

@@ -49,7 +49,7 @@ public class Main {
 		org.apache.lucene.search.Query query = qb
 		  .keyword()
 		  .onFields("title", "description")
-		  .matching("Argentina")
+		  .matching("Brasil")
 		  .createQuery();
 
 		// wrap Lucene query in a javax.persistence.Query

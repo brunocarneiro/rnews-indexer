@@ -82,9 +82,9 @@ public class MyAnalyzer extends StopwordAnalyzerBase {
 	      Reader reader) {
 	    final Tokenizer source = new StandardTokenizer(matchVersion, reader);
 	    TokenStream result = new StandardFilter(matchVersion, source);
+	    result = new WordCounterFilter(result, getDefaultStopSet());
 	    result = new LowerCaseFilter(matchVersion, result);
 	    result = new StopFilter(matchVersion, result, stopwords);
-	    result = new WordCounterFilter(result, getDefaultStopSet());
 	    if(!stemExclusionSet.isEmpty())
 	      result = new KeywordMarkerFilter(result, stemExclusionSet);
 	    result = new SnowballFilter(result, new org.tartarus.snowball.ext.PortugueseStemmer());
@@ -109,7 +109,7 @@ class WordCounterFilter extends FilteringTokenFilter {
 		CharTermAttribute source = input.getAttribute(CharTermAttribute.class);
 		Integer count = wordCounter.get(source.toString());
 		String word = makeUniqueWord(source.toString());
-		if(stopWords.contains(source.toString())){
+		if(!StringUtils.isNumeric(word) && stopWords.contains(source.toString()) || word.length()<=2){
 			return false;
 		}
 		if (count==null)
